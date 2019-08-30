@@ -1,24 +1,28 @@
 import React from 'react'
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'
 
+import Card from '../components/Card'
+
 const StartGameScreen = props => {
   return(
     <View style={styles.screen}>
       <Text style={styles.title}>Start a New Game!</Text>
-      <View style={styles.inputContainer}>
-        <Text>Select A Number</Text>
-        <TextInput />
-        <View style={styles.buttonContainer}>
-          <Button 
-            title="Reset"
-            onPress={()=>{}}
-          />
-          <Button
-            title ="Confirm"
-            onPress={()=>{}}
-          />
+      <Card style={styles.inputContainer}>
+        <View style={styles.inputContainer}>
+          <Text>Select A Number</Text>
+          <TextInput />
+          <View style={styles.buttonContainer}>
+            <Button 
+              title="Reset"
+              onPress={()=>{}}
+            />
+            <Button
+              title ="Confirm"
+              onPress={()=>{}}
+            />
+          </View>
         </View>
-      </View>
+      </Card>
     </View>
   )
 };
@@ -32,7 +36,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginVertical: 10,
-
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -42,22 +45,8 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: 300,
-    maxWidth: '80%',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 10,
-
-// Shadow only works on iOS
-
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.26,
-    shadowRadius: 6,
-
-// Elevation only works on Android
-
-    elevation: 10
+    maxWidth: "80%",
+    alignItems: 'center'
   }
 });
 
