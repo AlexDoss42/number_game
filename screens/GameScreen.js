@@ -7,7 +7,7 @@ import Card from '../components/Card'
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  const rndNum = Math.floor(Math.random() * (max - min) + min);
+  const rndNum = Math.floor(Math.random() * (max - min)) + min;
   if(rndNum === exclude) {
     return generateRandomBetween(min, max, exclude);
   } else {
@@ -16,6 +16,7 @@ const generateRandomBetween = (min, max, exclude) => {
 };
 
 const GameScreen = props => {
+
   const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1, 100, props.userChoice))
   
   const currentLow = useRef(1)
@@ -30,7 +31,7 @@ const GameScreen = props => {
     if(direction === 'lower'){
       currentHigh.current = currentGuess;
     } else {
-      currentLow.current = currentGuess
+      currentLow.current = currentGuess;
     }
 
     const nextNumber = generateRandomBetween(currentLow.current, currentHigh.current, currentGuess)
