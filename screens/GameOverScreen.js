@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   highlight: {
-    color: Colors.primary
+    color: Colors.primary,
+    fontFamily: 'open-sans-bold'
   }
 })
