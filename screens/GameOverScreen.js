@@ -9,7 +9,8 @@ const GameOverScreen = props => {
       <BodyText>The Game is Over!</BodyText>
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/success.png')}
+          // source={require('../assets/success.png')}  //Local Image
+          source={{uri: 'https://image.shutterstock.com/image-photo/hiker-backpacks-reaches-summit-mountain-260nw-1233415504.jpg'}}
           style={styles.image}
           resizeMode='cover'
         />
