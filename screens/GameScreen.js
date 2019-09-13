@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import NumberContainer from '../components/NumberContainer'
 import Card from '../components/Card'
 import MainButton from '../components/MainButton'
+import BodyText from '../components/BodyText'
 
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -16,6 +17,13 @@ const generateRandomBetween = (min, max, exclude) => {
     return rndNum;
   }
 };
+
+const renderListItem = (value, numOfRound) => (
+  <View key={value} style={styles.listItem}>
+    <BodyText>#{numOfRound}</BodyText>
+    <BodyText>{value}</BodyText>
+  </View>
+)
 
 const GameScreen = props => {
 
@@ -56,17 +64,31 @@ const GameScreen = props => {
       <Text>Opponent's Guess</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
-        <MainButton onPress={nextGuessHandler.bind(this, 'lower')}><Ionicons name='md-remove' size={24} color="white"/></MainButton>
-        <MainButton onPress={nextGuessHandler.bind(this, 'greater')}><Ionicons name='md-add' size={24} color="white"/></MainButton>
+        <MainButton 
+          onPress={nextGuessHandler.bind(this, 'lower')}
+        >
+          <Ionicons 
+            name='md-remove' 
+            size={24} 
+            color="white"
+          />
+        </MainButton>
+        <MainButton 
+          onPress={nextGuessHandler.bind(this, 'greater')}
+        >
+          <Ionicons 
+            name='md-add' 
+            size={24} 
+            color="white"
+          />
+        </MainButton>
       </Card>
-      <ScrollView>
-        {pastGuesses.map(guess => (
-          <View key={guess}>
-            <Text>{guess}</Text>
-          </View>
-        ))}
-      </ScrollView>
-    </View>
+      <View style={styles.list}>
+        <ScrollView>
+          {pastGuesses.map((guess, i) => renderListItem(guess, pastGuesses.length - i))}
+        </ScrollView>
+      </View>
+    </View> 
   )
 };
 
@@ -82,6 +104,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 400,
     maxWidth: '90%'
+  },
+  list: {
+    width: '80%'
+  },
+  listItem: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 15,
+    marginVertical: 10,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 });
 
