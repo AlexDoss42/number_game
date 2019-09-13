@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     maxWidth: '90%'
   },
   list: {
+    flex: 1,
     width: '80%'
   },
   listItem: {
